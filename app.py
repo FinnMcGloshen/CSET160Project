@@ -54,6 +54,7 @@ def reg():
     return render_template('sign_up.html')
 
 
+
 @app.route('/sign_up', methods=['POST','GET'])
 def register():
     if request.method == 'POST':
