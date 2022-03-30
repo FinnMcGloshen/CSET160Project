@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
     <title>Sign Up</title>
 </head>
 <body>
-    <img
-    id="logoImage"
-    src="../images/RestaurantLogo.jpg"
-    alt="logo image"
-/>
-
+    <center>
+    <div class = "header">
+        <img src="../images/logo.png" id="logo">
+        <h1>Bike Shop</h1>
+    </div>
+    <center>
+    
     <div class="back">
         <h1>Welcome</h1>
         <form action="localhost:5000" method="post" name="signupForm">
@@ -22,15 +23,15 @@
             <p class="inputLabel">Create Password:</p>
             <input name="password" type="text" placeholder="P455word!" required/>
             <br/>
-            </div>
             <button type="submit" id="submit">Sign Up</button>
+            </div>
             <br/>
             <p>Already have an account?</p>
             <a href="login.html">Login Here</a>
         </form>
         <br /><br />
         <p style="font-weight: lighter; font-style: italic">
-            © The Bike Store
+            © The Bike Shop
         </p>
     </div>
 </body>

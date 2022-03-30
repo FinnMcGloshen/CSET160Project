@@ -12,13 +12,18 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-image: url(../images/BackgroundImage.jpg);
+	background-image: 
+		linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url(../images/BackgroundImage.jpg); 	
+        background-size: 100%;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 }
 
-
 /* BODY */
+
+#logo{
+	height: 25px;
+}
 
 .back {
 	display: flex;
@@ -27,7 +32,10 @@ body {
 	background-color: white;
 	height: 60%;
 	width: 400px;
-	border: 2px black dashed;
+	border: 2px black solid;
+	border-radius:35px;
+	padding-top: 18px;
+	padding-bottom: 18px;
 }
 
 .back h1,
@@ -65,55 +73,21 @@ h1 {
 	margin-bottom: -10px;
 }
 
-#logoImage {
-	border-radius: 50%;
-	margin-bottom: 30px;
-}
-
 form {
 	width: 400px;
 	text-align: center;
 }
 
-.success {
-	color: #22bb33;
-	border: solid 1px #22bb33;
-	padding: 3px;
-	border-radius: 3px;
-}
-
-.error {
-	color: #bb2124;
-	border: solid 1px #bb2124;
-	padding: 3px;
-	border-radius: 3px;
-}
-
-.check {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-}
-
-.check p {
-	position: relative;
-	right: -50px
-}
-
-.check input {
-	margin-left: 0;
-	position: relative;
-	bottom: -3px;
-}
-
-.manager {
-	color: #0275d8;
-	padding: 3px;
-}
-
 #submit {
 	margin-bottom: 10px;
+	background-color: rgb(160, 160, 160);
+	width: 25%;
+	height: 15%;
+	color: white
+}
+#submit:active {
+	background-color:white;
+	color: rgb(163, 163, 163);
 }
 
 .header
@@ -124,6 +98,8 @@ form {
     height:70px;
     border-radius: 35px;
     text-align: center;
+	padding: 5px;
+	margin: 15px
 }
 
 .menu_box{
@@ -136,8 +112,8 @@ form {
 .bike_card
 {
     display: inline-block;
-	border: 2px solid #e7e7e7;
-	border-radius: 4px;
+	border: 2px solid black;
+	border-radius: 25px;
 	padding: .5rem;
 	width: 300px;
 	height: 300px;
