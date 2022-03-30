@@ -14,6 +14,11 @@
     alt="logo image"
 />
 
+{% if error = "faillogin" %}
+  
+    <li>Incorrect username or password</li>
+{% endif %}
+
     <div class="back">
         <h1>Welcome</h1>
         <form action="localhost:5000" method="post" name="signupForm">
