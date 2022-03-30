@@ -14,8 +14,8 @@ def get_db_connection():
    return conn
 
 @app.route("/register")
-def register():   
-    return render_template("register.html")
+def register(error =None):   
+    return render_template("register.html", error=error)
 
 @app.route("/register", methods=["POST"])
 def registers():
@@ -38,7 +38,7 @@ def registers():
         else:
             curr.close()
             conn.close()
-            return redirect(url_for('error',errType='Account already exists'))
+            return redirect(url_for('register',errType='existingaccount'))
 
 @app.route("/")
 def login():
@@ -61,7 +61,7 @@ def logins():
             conn.close()
             return redirect(url_for('shop',name=name,username=in_user,password=in_pass))
         else:
-            return redirect(url_for('error',errType='Incorect Password'))
+            return redirect(url_for('login',errType='faillogin'))
 
 @app.route("/shop/<name>")
 def shop(name):
