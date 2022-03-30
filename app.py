@@ -1,77 +1,75 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask,render_template,request,redirect,url_for
 import psycopg2
 
 app = Flask(__name__)
-username = 'admin'
-pswrd = 'welcome1'
-userpass = [['admin','password']]
 
-@app.route('/welcome/<userID><password>')
-def welcome(name):
-    return render_template('welcome.html',name=name)
+def get_db_connection():
+   conn = psycopg2.connect(
+   host = 'localhost',
+   database = 'X',
+   user = 'postgres',
+   password = 'X'
+   )
 
+   return conn
 
-conn = psycopg2.connect(
-    host = 'localhost',
-    database = 'flask_db',
-    password = 'pgadmin',
-    user = 'postgres'
-)
+@app.route("/register")
+def register(error =None):   
+    return render_template("register.html", error=error)
 
-cur = conn.cursor()
+@app.route("/register", methods=["POST"])
+def registers():
 
-cur.execute('INSERT INTO books (title, author)'
-'VALUES(%s, %s)',
-('TestName','TestAuthor'))
+    conn = get_db_connection()
+    curr = conn.cursor()
 
-conn.commit()
-cur.close()
-conn.close()
+    users_list = curr.execute("SELECT username, password FROM users")
 
-@app.route('/login')
-def hello():
-    return render_template('login.html')
+    if request.method == 'POST':
+        in_name = request.form['name']
+        in_user = request.form['username']
+        in_pass = request.form['password']
+        in_mail = request.form['email']
+        if [in_user,in_pass] not in users_list:
+            curr.execute("INSERT INTO users (name, username, password, email) VALUES (%s, %s, %s, %s)" [in_name, in_user, in_pass, in_mail])
+            curr.close()
+            conn.close()
+            return redirect(url_for('/'))
+        else:
+            curr.close()
+            conn.close()
+            return redirect(url_for('register',errType='existingaccount'))
 
-
-@app.route('/incorrect/<errType>')
-def incorrect(errType):
-    return render_template('incorrect.html',errType=errType)
-
-
-@app.route('/login', methods=['POST','GET'])
+@app.route("/")
 def login():
+    return render_template("login.html")
+
+@app.route("/", methods=["POST", "GET"])
+def logins():
+
+    conn = get_db_connection()
+    curr = conn.cursor()
+
+    users_list = curr.execute("SELECT username, password FROM users")
+
     if request.method == 'POST':
-        user = request.form['nm']
-        userpassed = request.form['pw']
-        if [user,userpassed] in userpass:
-            return redirect(url_for('welcome',name=user,password = userpassed))
-        
+        in_user = request.form['username']
+        in_pass = request.form['password']
+        if [in_user, in_pass] in users_list:
+            name = curr.execute("SELECT name FROM users WHERE username = %s AND password = %s" [in_user, in_pass])
+            curr.close()
+            conn.close()
+            return redirect(url_for('shop',name=name,username=in_user,password=in_pass))
         else:
-            return redirect(url_for('incorrect',errType='Incorrect Password'))
+            return redirect(url_for('login',errType='faillogin'))
 
-@app.route('/sign_up')
-def reg():
-    return render_template('sign_up.html')
+@app.route("/shop/<name>")
+def shop(name):
+    return render_template("shop.html", name=name)
 
-
-@app.route('/sign_up', methods=['POST','GET'])
-def register():
-    if request.method == 'POST':
-                user = request.form['unr']
-                pass1 = request.form['pwr']
-                if [user,pass1] not in userpass:
-                    userpass.append([user,pass1])
-                    return redirect(url_for('login'))
-                else:
-                    return redirect(url_for('incorrect',errType = 'Account already exists'))
-    else:
-        user = request.args.get('nm')
-        userpassed = request.args.get('pw')
-        if [user,userpassed] in userpass:
-            return redirect(url_for('welcome',name = user))
-        else:
-            return redirect(url_for('incorrect',errType='Account already exists'))
-
+@app.route("/shop/<name>", methods=["POST", "GET"])
+def purchase(name, username, password):
+    i=1
 
 if __name__ == '__main__':
-    app.run(debug=True)
+   app.run(debug=True)
