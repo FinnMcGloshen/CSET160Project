@@ -8,16 +8,17 @@
     <title>Log In</title>
 </head>
 <body>
-    <img
-    id="logoImage"
-    src="../images/RestaurantLogo.jpg"
-    alt="logo image"
-/>
+    <center>
+    <div class = "header">
+            <img src="../images/logo.png" id="logo">
+            <h1>Bike Shop</h1>
+    </div>
+    <center>
 
-{% if error = "faillogin" %}
+<!-- {% if error = "faillogin" %}
   
     <li>Incorrect username or password</li>
-{% endif %}
+{% endif %} -->
 
     <div class="back">
         <h1>Welcome</h1>
@@ -27,15 +28,15 @@
             <p class="inputLabel">Create Password:</p>
             <input name="password" type="text" placeholder="P455word!" required/>
             <br/>
-            </div>
             <button type="submit" id="submit">Log In</button>
+            </div>
             <br/>
             <p>Don't have an account?</p>
             <a href="./sign_up.html">Sign Up Here</a>
         </form>
         <br /><br />
         <p style="font-weight: lighter; font-style: italic">
-            © The Bike Store
+            © The Bike Shop
         </p>
     </div>
 </body>
