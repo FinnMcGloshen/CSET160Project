@@ -49,12 +49,12 @@ def login():
         else:
             return redirect(url_for('incorrect',errType='Incorrect Password'))
 
-@app.route('/reg')
+@app.route('/sign_up')
 def reg():
-    return render_template('registration.html')
+    return render_template('sign_up.html')
 
 
-@app.route('/register', methods=['POST','GET'])
+@app.route('/sign_up', methods=['POST','GET'])
 def register():
     if request.method == 'POST':
                 user = request.form['unr']
