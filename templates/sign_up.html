@@ -14,22 +14,13 @@
     alt="logo image"
 />
 
-{% if error = "existingaccount" %}
-  
-    <p>Account already exists</p>
-{% endif %}
-
     <div class="back">
         <h1>Welcome</h1>
         <form action="localhost:5000" method="post" name="signupForm">
-            <p class="inputLabel">Enter Name:</p>
-            <input name="name" type="text" placeholder="Name" required/>
             <p class="inputLabel">Enter Username:</p>
             <input name="username" type="text" placeholder="Username_1" required/>
             <p class="inputLabel">Create Password:</p>
             <input name="password" type="text" placeholder="P455word!" required/>
-            <p class="inputLabel">Enter Email:</p>
-            <input name="email" type="text" placeholder="Email" required/>
             <br/>
             </div>
             <button type="submit" id="submit">Sign Up</button>
