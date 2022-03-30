@@ -1,0 +1,114 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+@font-face {
+	font-family: Praise-Regular;
+	src: url(../Praise-Regular.ttf);
+}
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: url(../images/BackgroundImage.jpg);
+}
+
+/* BODY */
+
+.back {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+	height: 60%;
+	width: 400px;
+	border: 2px black dashed;
+}
+
+.back h1,
+.back input,
+.back button {
+	margin: 8px;
+}
+
+.inputLabel {
+	font-size: 20px;
+	font-style: italic;
+}
+
+.back p {
+	margin-top: 8px;
+	font-size: 16px;
+}
+
+.back input {
+	height: 25px;
+	width: 40%;
+	text-indent: 4px;
+	outline: none;
+}
+
+.back a,
+.back a:visited {
+	color: black;
+	font-style: italic;
+}
+
+h1 {
+	font-family: "Praise-Regular";
+	font-size: 40px;
+	margin-bottom: -10px;
+}
+
+#logoImage {
+	border-radius: 50%;
+	margin-bottom: 30px;
+}
+
+form {
+	width: 400px;
+	text-align: center;
+}
+
+.success {
+	color: #22bb33;
+	border: solid 1px #22bb33;
+	padding: 3px;
+	border-radius: 3px;
+}
+
+.error {
+	color: #bb2124;
+	border: solid 1px #bb2124;
+	padding: 3px;
+	border-radius: 3px;
+}
+
+.check {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.check p {
+	position: relative;
+	right: -50px
+}
+
+.check input {
+	margin-left: 0;
+	position: relative;
+	bottom: -3px;
+}
+
+.manager {
+	color: #0275d8;
+	padding: 3px;
+}
+
+#submit {
+	margin-bottom: 10px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <img
+    id="logoImage"
+    src="../images/RestaurantLogo.jpg"
+    alt="logo image"
+/>
+
+    <div class="back">
+        <h1>Welcome</h1>
+        <form action="localhost:5000" method="post" name="signupForm">
+            <p class="inputLabel">Enter Username:</p>
+            <input name="username" type="text" placeholder="Username_1" required/>
+            <p class="inputLabel">Create Password:</p>
+            <input name="password" type="text" placeholder="P455word!" required/>
+            <br/>
+            </div>
+            <button type="submit" id="submit">Log In</button>
+            <br/>
+            <p>Don't have an account?</p>
+            <a href="login.html">Sign Up Here</a>
+        </form>
+        <br /><br />
+        <p style="font-weight: lighter; font-style: italic">
+            © The Bike Store
+        </p>
+    </div>
+</body>
+</html>
