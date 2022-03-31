@@ -39,8 +39,7 @@ body {
 }
 
 .back h1,
-.back input,
-.back button {
+.back input {
 	margin: 8px;
 }
 
@@ -79,10 +78,11 @@ form {
 }
 
 #submit {
-	margin-bottom: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	background-color: rgb(160, 160, 160);
-	width: 25%;
-	height: 15%;
+	width: 100px;
+	height: 40px;
 	color: white
 }
 #submit:active {
